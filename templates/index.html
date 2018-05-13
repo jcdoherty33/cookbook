@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipes
+{% endblock %}
+
+{% block main %}
+    <h3>Saved Recipes</h3>
+    <form action="/view" method="post">
+        <div class="list-group">
+            {% for recipe in recipes %}
+                <button type="submit" class="list-group-item list-group-item-action" name="recipe" value="{{ recipe.recipe_id }}">{{ recipe.title }} | {{recipe.type }}</button>
+            {% endfor %}
+        </div>
+    </form>
+{% endblock %}

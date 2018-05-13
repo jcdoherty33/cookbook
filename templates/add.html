@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post">
+        <div class="input-group">
+            <input autocomplete="off" autofocus type="url" class="form-control" name="url" id="url" placeholder="URL" aria-describedby="url_help">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" id="send_url" type="button">Get Recipe</button>
+            </span>
+        </div>
+        <small id="url_help" class="form-text text-muted">
+            Enter a URL to retrieve a recipe from a website.
+        </small>
+        <br>
+        <div class="form-group">
+            <label for="title">Recipe</label>
+            <input autocomplete="off" class="form-control" name="title" id="title" placeholder="Recipe Title" type="text" required/>
+        </div>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control" name="type"/>
+                <option disabled selected option>Type</option>
+                <option>Breakfast</option>
+                <option>Appetizer</option>
+                <option>Main</option>
+                <option>Dessert</option>
+                <option>Drink</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ingredients">Ingredients</label>
+            <br>
+            <textarea class="form-control" name="ingredients" id="ingredients" placeholder="Ingredients" type="text" rows="15" cols="100"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="instructions">Instructions</label>
+            <br>
+            <textarea class="form-control" name="instructions" id="instructions" placeholder="Instructions" type="text" rows="15" cols="100"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    <script>
+
+        // When Get Recipe button is clicked
+        $("#send_url").on("click", function() {
+            let parameters = {
+                url: $("#url").val()
+            };
+
+            // Send URL to /getrecipe to retrieve recipe data
+            $.getJSON("/getrecipe", parameters, function(data) {
+
+                // Set input fields in form to recipe data
+                $("#title").val(data.title);
+                $("#ingredients").val(data.ingredients);
+                $("#instructions").val(data.instructions);
+            });
+        });
+
+    </script>
+{% endblock %}

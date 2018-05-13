@@ -1,0 +1,68 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+
+    /* font for brand */
+    font: Georgia, serif;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #20b2aa;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main .list-group-item
+{
+    /* override Boostrap's 100% width for list groups */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main h3
+{
+    /* font for headers */
+    font: Georgia, serif;
+    font-variant: small-caps;
+    color: #20b2aa;
+}
+
+main h5
+{
+    /* font for small headers */
+    font: Georgia, serif;
+    font-variant: small-caps;
+    color: #20b2aa;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+main a
+{
+    /* font for links */
+    color: #000080;
+}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ recipe.title }}
+{% endblock %}
+
+{% block main %}
+    <div class="row" style="text-align: left">
+        <h3>{{ recipe.title }}</h3>
+    </div>
+    <div class="row" style="text-align: left">
+        <h5>{{ recipe.type }} | </h5>
+        <i><a href="{{ recipe.url }}" target="_blank">&nbsp{{ recipe.url }}</a></i>
+    </div>
+    <div class="row" style="text-align: left">
+        <form action="/viewform" method="post">
+            <button class="btn btn-secondary btn-sm" name="edit" value="{{ recipe.recipe_id }}">Edit</button>
+            <button class="btn btn-secondary btn-sm" name="delete" value="{{ recipe.recipe_id }}">Delete</button>
+        </form>
+    </div>
+    <br>
+    <div class="row" style="text-align: left">
+        <div class="col-md-4">
+            <h5>Ingredients</h5>
+            <ul>
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <h5>Instructions</h5>
+            <ol>
+                {% for step in instructions %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+{% endblock %}
